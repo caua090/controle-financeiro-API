@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Transação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        header .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        header .buttons a {
+            text-decoration: none;
+            color: white;
+            background-color: #333;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        header .buttons a:hover {
+            background-color: #555;
+        }
+        main {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        main h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        form div {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Controle Financeiro</h1>
+        </div>
+        <div class="buttons">
+            <a href="{% url 'index' %}">Home</a>
+        </div>
+    </header>
+    <main>
+        <h1>Adicionar Transação</h1>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div>
+                <label for="tipo">Tipo</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="receita">Receita</option>
+                    <option value="despesa">Despesa</option>
+                </select>
+            </div>
+            <div>
+                <label for="categoria">Categoria</label>
+                <input type="text" id="categoria" name="categoria" placeholder="Ex: Alimentação, Transporte" required>
+            </div>
+            <div>
+                <label for="valor">Valor</label>
+                <input type="number" id="valor" name="valor" step="0.01" placeholder="Ex: 100.50" required>
+            </div>
+            <div>
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" name="descricao" rows="3" placeholder="Detalhes sobre a transação"></textarea>
+            </div>
+            <div>
+                <label for="data">Data</label>
+                <input type="date" id="data" name="data" required>
+            </div>
+            <button type="submit">Salvar</button>
+        </form>
+    </main>
+</body>
+</html>

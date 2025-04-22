@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Categoria</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        header .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        header .buttons a {
+            text-decoration: none;
+            color: white;
+            background-color: #333;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        header .buttons a:hover {
+            background-color: #555;
+        }
+        main {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        main h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+        .details {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .details p {
+            font-size: 1.2em;
+            color: #333;
+            margin: 10px 0;
+        }
+        .details p span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Controle Financeiro</h1>
+        </div>
+        <div class="buttons">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'home_aplicacao' %}">Adicionar Transação</a>
+        </div>
+    </header>
+    <main>
+        <h1>Detalhes da Categoria</h1>
+        <div class="details">
+            <p><span>Tipo:</span> {{ view_transacao_user.tipo }}</p>
+            <p><span>Descrição:</span> {{ view_transacao_user.descricao }}</p>
+            <p><span>Total :</span> {{ view_transacao_user.valor }}</p>
+            <p><span>Última Atualização:</span> {{ view_transacao_user.data }}</p>
+        </div>
+    </main>
+</body>
+</html>
